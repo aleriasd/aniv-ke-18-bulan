@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Anniversary 🤍</title>
+    <title>KIKA 🤍</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
     <style>
         body {
@@ -30,15 +30,16 @@
 
         h1 {
             color: #ffffff;
-            font-size: 3rem;
-            margin-bottom: 30px;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            padding: 0 10px;
         }
 
         .foto-interaktif {
-            width: 350px;
-            max-width: 80vw;
+            width: 320px;
+            max-width: 75vw;
             transition: all 0.3s ease-in-out; 
             cursor: pointer;
             filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.3));
@@ -49,21 +50,11 @@
             transform: scale(1.05); 
         }
 
-        .pesan-kecil {
-            color: #ffffff;
-            font-size: 0.9rem;
-            margin-top: 15px;
-            opacity: 0.8;
-        }
-
-        /* --- STYLING MODAL DENGAN SLIDER --- */
         .modal-overlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.85);
             z-index: 100;
             justify-content: center;
@@ -73,27 +64,25 @@
         .modal-box {
             background: white;
             border-radius: 20px;
-            max-width: 500px;
-            width: 85%;
-            overflow: hidden; /* Penting untuk menyembunyikan slide lain */
+            max-width: 450px;
+            width: 90%;
             position: relative;
             box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            overflow: hidden;
             animation: popIn 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
 
-        /* Wadah geser untuk slide */
         .slider-wrapper {
             display: flex;
             transition: transform 0.5s ease-in-out;
-            width: 200%; /* Karena ada 2 slide */
+            width: 100%;
         }
 
         .slide {
-            width: 50%;
-            padding: 40px;
+            flex: 0 0 100%;
+            padding: 30px;
             box-sizing: border-box;
             text-align: center;
-            flex-shrink: 0;
         }
 
         @keyframes popIn {
@@ -101,31 +90,38 @@
             to { transform: scale(1); opacity: 1; }
         }
 
-        /* Font Sambung (Dancing Script) */
         .kursif {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             color: #333;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
-        /* Font Times New Roman */
         .isi-pesan {
             font-family: 'Times New Roman', Times, serif;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             color: #444;
             line-height: 1.6;
+            word-wrap: break-word;
         }
 
-        /* Styling Foto Kenangan di Slide 2 */
         .foto-kenangan {
             width: 100%;
+            height: 250px;
+            object-fit: cover;
             border-radius: 10px;
             margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* Tombol Navigasi */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px 15px;
+            background: white;
+        }
+
         .nav-btn {
             background: #a6c1ee;
             color: white;
@@ -133,93 +129,108 @@
             padding: 8px 15px;
             border-radius: 20px;
             cursor: pointer;
-            margin: 10px 5px;
             font-weight: bold;
-            transition: 0.3s;
         }
 
-        .nav-btn:hover { background: #8da9d6; }
+        .nav-btn:disabled { background: #eee; color: #ccc; cursor: not-allowed; }
 
-        .btn-tutup-top {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: none;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            color: #999;
-        }
+        .counter { font-size: 0.8rem; color: #999; }
     </style>
 </head>
 <body>
 
+    <audio id="bgMusic" loop>
+        <source src="musik.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="container">
-        <h1>Happy Anniversary, Kinawww🤍!</h1>
+        <h1>SELAMAT KE-18 BULAN SAYANGGG!!!</h1>
         
         <img 
             src="Datar.png" 
-            alt="Foto Kita" 
             class="foto-interaktif"
             onmouseover="this.src='Senyum.png'"
             onmouseout="this.src='Datar.png'"
             onclick="bukaPesan()"
         >
         
-        <p class="pesan-kecil">Klik fotonya untuk melihat kejutan...</p>
+        <p style="color:white; opacity:0.8; margin-top:15px; font-size:0.9rem;">Klik PUTU NAA SAYANGGG!!!</p>
     </div>
 
     <div class="modal-overlay" id="overlay">
         <div class="modal-box">
-            <button class="btn-tutup-top" onclick="tutupPesan()">×</button>
-            
             <div class="slider-wrapper" id="slider">
                 <div class="slide">
-                    <h2 class="kursif">Dear Kina...</h2>
+                    <h2 class="kursif">Hawo Kina...</h2>
                     <p class="isi-pesan">
-                        Terima kasih sudah menemani perjalananku sejauh ini. 
-                        Kamu adalah alasan kenapa setiap hari terasa lebih berwarna. 
-                        Semoga kita tetap seperti ini selamanya.
+                        HIHIW MAACIWWW IAA UDAH MAU SAMA KALEEE, 18 BULAN SEDIH MAYAHHH AMBEKKK SENANG SENANG SAMA KINAAA, KALE SO HAPPYYY SANGATTT HIHIW MWAH MWAH :3. SAMA KAYE TEYUSS IAAA
                     </p>
-                    <button class="nav-btn" onclick="keSlide(1)">Selanjutnya ➔</button>
                 </div>
 
-                <div class="slide">
-                    <img src="First.jpg" alt="Awal Pacaran" class="foto-kenangan">
-                    <h2 class="kursif">7 November 2024</h2>
-                    <p class="isi-pesan" style="font-style: italic;">Di mana semuanya dimulai...</p>
-                    <div style="margin-top: 10px;">
-                        <button class="nav-btn" onclick="keSlide(0)">⬅ Kembali</button>
-                        <button class="nav-btn" style="background:#fbc2eb" onclick="tutupPesan()">Selesai 🤍</button>
-                    </div>
-                </div>
+                <div class="slide"><img src="1.jpg" class="foto-kenangan"><h2 class="kursif">7 November 2024</h2></div>
+                <div class="slide"><img src="2.jpg" class="foto-kenangan"><h2 class="kursif">7 Desember 2024</h2></div>
+                <div class="slide"><img src="3.jpg" class="foto-kenangan"><h2 class="kursif">7 Januari 2025</h2></div>
+                <div class="slide"><img src="4.jpg" class="foto-kenangan"><h2 class="kursif">7 Februari 2025</h2></div>
+                <div class="slide"><img src="5.jpg" class="foto-kenangan"><h2 class="kursif">7 Maret 2025</h2></div>
+                <div class="slide"><img src="6.jpg" class="foto-kenangan"><h2 class="kursif">7 April 2025</h2></div>
+                <div class="slide"><img src="7.jpg" class="foto-kenangan"><h2 class="kursif">7 Mei 2025</h2></div>
+                <div class="slide"><img src="8.jpg" class="foto-kenangan"><h2 class="kursif">7 Juni 2025</h2></div>
+                <div class="slide"><img src="9.jpg" class="foto-kenangan"><h2 class="kursif">7 Juli 2025</h2></div>
+                <div class="slide"><img src="10.jpg" class="foto-kenangan"><h2 class="kursif">7 Agustus 2025</h2></div>
+                <div class="slide"><img src="11.jpg" class="foto-kenangan"><h2 class="kursif">7 September 2025</h2></div>
+                <div class="slide"><img src="12.jpg" class="foto-kenangan"><h2 class="kursif">7 Oktober 2025</h2></div>
+                <div class="slide"><img src="13.jpg" class="foto-kenangan"><h2 class="kursif">7 November 2025</h2></div>
+                <div class="slide"><img src="14.jpg" class="foto-kenangan"><h2 class="kursif">7 Desember 2025</h2></div>
+                <div class="slide"><img src="15.jpg" class="foto-kenangan"><h2 class="kursif">7 Januari 2026</h2></div>
+                <div class="slide"><img src="16.jpg" class="foto-kenangan"><h2 class="kursif">7 Februari 2026</h2></div>
+                <div class="slide"><img src="17.jpg" class="foto-kenangan"><h2 class="kursif">7 Maret 2026</h2></div>
+                <div class="slide"><img src="18.jpg" class="foto-kenangan"><h2 class="kursif">7 April 2026</h2></div>
             </div>
+
+            <div class="nav-container">
+                <button class="nav-btn" id="prevBtn" onclick="moveSlide(-1)">⬅ Back</button>
+                <span class="counter" id="slideCounter">1 / 19</span>
+                <button class="nav-btn" id="nextBtn" onclick="moveSlide(1)">Next ➔</button>
+            </div>
+            
+            <button onclick="tutupPesan()" style="width:100%; padding:12px; background:#fbc2eb; border:none; color:white; font-weight:bold; cursor:pointer;">Tutup 🤍</button>
         </div>
     </div>
 
     <script>
+        const slider = document.getElementById('slider');
+        const slides = document.querySelectorAll('.slide');
+        const counter = document.getElementById('slideCounter');
+        const music = document.getElementById('bgMusic');
+        let currentIdx = 0;
+
         function bukaPesan() {
             document.getElementById('overlay').style.display = 'flex';
-            keSlide(0); // Selalu mulai dari slide 1 saat dibuka
+            currentIdx = 0;
+            updateSlider();
+            music.play().catch(e => console.log("Music play blocked"));
         }
 
         function tutupPesan() {
             document.getElementById('overlay').style.display = 'none';
         }
 
-        function keSlide(index) {
-            const slider = document.getElementById('slider');
-            slider.style.transform = `translateX(-${index * 50}%)`;
+        function moveSlide(direction) {
+            currentIdx += direction;
+            updateSlider();
         }
 
-        // Tutup modal jika klik di area luar kotak putih
-        window.onclick = function(event) {
-            const overlay = document.getElementById('overlay');
-            if (event.target == overlay) {
-                tutupPesan();
-            }
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentIdx * 100}%)`;
+            counter.innerText = `${currentIdx + 1} / ${slides.length}`;
+            
+            document.getElementById('prevBtn').disabled = (currentIdx === 0);
+            document.getElementById('nextBtn').disabled = (currentIdx === slides.length - 1);
+        }
+
+        window.onclick = function(e) {
+            if (e.target == document.getElementById('overlay')) tutupPesan();
         }
     </script>
-
 </body>
 </html>
